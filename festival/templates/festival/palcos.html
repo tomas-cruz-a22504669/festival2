@@ -5,8 +5,13 @@
 
 {% for palco in palcos %}
 <div style="display: flex; align-items: center; gap: 12px;">
-    <h2>{{ palco.nome }}</h2>
-    <a href="" class="btn">Editar palco</a>
+    <h2>
+        {{ palco.nome }} ({{ palco.capacidade }} pessoas &bull; {{ palco.concertos.count }} concertos 
+        {% if palco.acessibilidade_mobilidade_reduzida %}
+            &bull; ♿
+        {% endif %})
+    </h2>
+    <a href="{% url 'editar_palco' palco.id %}" class="btn">Editar palco</a>
 </div>
 
     {% if palco.imagem %}
